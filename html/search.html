@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/search.css">
+  <script src="../js/search.js"></script>
+</head>
+
+<body>
+  <header class="search-header">
+    <!-- 搜索内容 -->
+    <div class="search-result">
+      <div class="search-items"></div>
+    </div>
+    <span class="goBack iconfont">&#xe744;</span>
+    <form action="javaScript:;" method="post" class="search-form">
+      <span class="search-icon"></span>
+      <input type="text" class="search-msg" placeholder="目的地/酒店/景点/航班号">
+      <span class="clear iconfont">&#xe74c;</span>
+      <button class="submitData">搜索</button>
+    </form>
+  </header>
+  <section class="sort">
+    <p class="hotSearch">热门搜索</p>
+    <ul class="sort-items">
+      <li>
+        <a href="#">机票</a>
+        <span class="font">&#xe764;</span>
+      </li>
+      <li>
+        <a href="#">酒店</a>
+        <span class="font">&#xe764;</span>
+      </li>
+      <li>
+        <a href="#">门票</a>
+        <span class="font">&#xe764;</span>
+      </li>
+      <li>
+        <a href="#">旅游</a>
+        <span class="font">&#xe764;</span>
+      </li>
+      <li>
+        <a href="#">火车票</a>
+        <span class="font">&#xe764;</span>
+      </li>
+      <li>
+        <a href="#">一日游</a>
+        <span class="font">&#xe764;</span>
+      </li>
+    </ul>
+    <div class="list">
+      <i class="list-icon"></i>
+      <span class="select"></span>
+      <span class="arrows iconfont">&#xe764;</span>
+    </div>
+  </section>
+  <div class="history">
+    <p class="historySearch">历史搜索</p>
+    <ul class="searchContent"></ul>
+  </div>
+  <p class="clearHistory">
+    清除历史搜索
+  </p>
+</body>
+
+</html>
