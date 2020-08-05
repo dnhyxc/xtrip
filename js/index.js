@@ -9,6 +9,7 @@ window.addEventListener('load', function () {
     var close = document.querySelector('.iconfont')
     var search = document.querySelector('.search')
     // getComputedStyle('元素','伪类')用于获取伪类元素
+    
     window.addEventListener('scroll', function () {
         header.style.background = '#fff'
         userHeader.style.background = 'url(../images/user.png) 0 -78px'

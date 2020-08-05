@@ -17,15 +17,19 @@ window.addEventListener('load', function () {
   // 获取输入的内容后台不存在情况的存储数据的标签
   var searchResult = document.querySelector('.search-result')
   var sort = document.querySelector('.sort')
-
+  // 用于保存历史记录到localStorage的数组
+  var data = []
   // 获取缓存的数据
   var historyData = window.localStorage.getItem('data')
   // historyData是否有值
   if (historyData) {
-    addNode()
+    var result = historyData.split(',')
+    result.forEach(item => {
+      addNode(item)
+    })
   }
   // 定义页面一刷新加载数据并创建对应的节点的函数
-  function addNode() {
+  function addNode(item) {
     history.style.display = 'block'
     clearHistory.style.display = 'block'
     // 创建需要添加的元素
@@ -33,7 +37,7 @@ window.addEventListener('load', function () {
     var span = document.createElement('span')
     span.innerHTML = '&#xe764;'
     var p = document.createElement('p')
-    p.innerHTML = historyData
+    p.innerHTML = item
     li.appendChild(p)
     li.appendChild(span)
     var limsg = li.children[0].innerHTML
@@ -85,10 +89,13 @@ window.addEventListener('load', function () {
     li.appendChild(p)
     li.addEventListener('click', function () {
       ajax(id)
-      window.localStorage.setItem('data', id)
+      if (data.indexOf(id) == -1) {
+        data.push(id)
+      }
+      window.localStorage.setItem('data', data)
       // location.assign(`../html/details.html?details=${result.search}`)
       // 将携带参数进行转码
-      window.location.href = "../html/details.html?id=" + encodeURI(id) + "&price=" + encodeURI(price)
+      window.location.href = "../html/details.html?id=" + encodeURI(encodeURI(id)) + "&price=" + encodeURI(encodeURI(price))
     })
     // searchItems.insertBefore(li, searchItems.children[0])
     searchItems.appendChild(li)
@@ -171,6 +178,21 @@ window.addEventListener('load', function () {
           div.appendChild(ul)
           searchItems.appendChild(div)
         }
+
+        // 获取搜索内容不存在的情况，页面的提示内容
+        var failItems = document.querySelector('.fail-items')
+        var child = failItems.children
+        for (let i = 0; i < child.length; i++) {
+          child[i].onclick = function () {
+            var hotList = child[i].children[1].innerHTML
+            if (data.indexOf(hotList) == -1) {
+              data.push(hotList)
+            }
+            localStorage.setItem('data', data)
+            ajax(hotList)
+            window.location.href = "../html/details.html?id=" + encodeURI(encodeURI(hotList))
+          }
+        }
       }
     }
     xhr.send(`category=${msg}`)
@@ -232,7 +254,7 @@ window.addEventListener('load', function () {
       // 发送ajax请求
       ajax(msg)
       // ====================跳转页面并携带参数==========================
-      window.location.href = "../html/details.html?id=" + encodeURI(msg)
+      window.location.href = "../html/details.html?id=" + encodeURI(encodeURI(msg))
     }
     // 点击右箭头操作
     var child = list[i].children
@@ -265,8 +287,11 @@ window.addEventListener('load', function () {
   // 点击热门搜索内容操作selectList
   selectContent.addEventListener('click', function () {
     var msg = this.innerHTML
+    if (data.indexOf(msg) == -1) {
+      data.push(msg)
+    }
     // 保存数据
-    window.localStorage.setItem('data', msg)
+    window.localStorage.setItem('data', data)
     // 使用localStorage保存数据
     var res = window.localStorage.getItem('data')
     // 创建需要添加的元素
@@ -274,7 +299,11 @@ window.addEventListener('load', function () {
     var span = document.createElement('span')
     span.innerHTML = '&#xe764;'
     var p = document.createElement('p')
-    p.innerHTML = res
+    var result = res.split(',')
+    console.log(result)
+    result.forEach(item => {
+      p.innerHTML = item
+    })
     li.appendChild(p)
     li.appendChild(span)
     var limsg = li.children[0].innerHTML
@@ -295,9 +324,15 @@ window.addEventListener('load', function () {
 
   // 给选中的热门搜索绑定点击事件
   selectList.addEventListener('click', function () {
+    var msg = this.children[1].innerHTML
+    if (data.indexOf(msg) == -1) {
+      data.push(msg)
+    }
+    window.localStorage.setItem('data', data)
+    document.cookie = data
     ajax(this.children[1].innerHTML)
     // ☆☆☆☆☆☆☆☆☆☆☆☆☆☆跳转页面并携带参数☆☆☆☆☆☆☆☆☆☆☆☆☆
-    window.location.href = "../html/details.html?id=" + encodeURI(this.children[1].innerHTML)
+    window.location.assign("../html/details.html?id=" + encodeURI(encodeURI(this.children[1].innerHTML)))
   })
 
   // 给input输入框绑定事件
@@ -332,8 +367,6 @@ window.addEventListener('load', function () {
       searchItems.style.display = 'none'
     }
     ajax(this.value)
-    // ====================跳转页面并携带参数==========================
-    // window.location.href = "../html/details.html?id=" + encodeURI(this.value)
   }
 
   // 给搜索按钮绑定事件
@@ -350,9 +383,13 @@ window.addEventListener('load', function () {
       sort.style.display = 'none'
       if (failedSearch === null) {
         ajax(value)
-        window.localStorage.setItem('data', value)
+        if (data.indexOf(value) == -1) {
+          data.push(value)
+        }
+        window.localStorage.setItem('data', data)
         // ====================跳转页面并携带参数==========================
-        window.location.href = "../html/details.html?id=" + encodeURI(value)
+        // var setDate = window.localStorage.getItem('data')
+        window.location.href = "../html/details.html?id=" + encodeURI(encodeURI(value))
       }
     }
     // 创建需要添加的元素
