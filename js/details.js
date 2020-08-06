@@ -1,12 +1,29 @@
 window.addEventListener('load', function () {
   var cityType = document.querySelector('.city-type')
+  var inpWrapper = document.querySelector('.inp-wrapper')
+  var city = document.querySelector('.city')
+  var searchMsg = document.querySelector('.search-msg')
+  var topheadpic = document.querySelector('.topheadpic')
+  var titleCity = document.querySelector('.title-city')
+  var ename = document.querySelector('.ename')
   var cIcon = document.querySelector('.c-icon')
   var container = document.querySelector('.container')
   var progressbar = document.querySelector('.progressbar')
   var sliderbar = document.querySelector('.sliderbar')
+  var goBack = document.querySelector('.goBack')
+  var aItems = document.querySelector('.a-items')
+  var animate = document.querySelector('.animate')
+  var tabBar = document.querySelector('.tab-bar')
+  var aHref = document.querySelectorAll('.a-href')
+  var titleText = document.querySelectorAll('.title-text')
+  var sectext = document.querySelectorAll('.sectext')
 
-  cIcon.style.left = 50 + 'px'
-  console.log(cIcon.offsetLeft)
+  // 动态设置searchMsg的宽度
+  var inpWrapperW = inpWrapper.offsetWidth
+  var cityW = city.offsetWidth
+  var width = inpWrapperW - cityW
+  searchMsg.style.width = width + 'px'
+
   // 获取url中携带的参数
   var params = location.search
   var result = params.split('=')
@@ -18,6 +35,7 @@ window.addEventListener('load', function () {
 
   ajax(`id=${id[0]}`)
 
+  // 根据用户点击的选项获取对应页面的数据内容
   function ajax(name) {
     var xhr = new XMLHttpRequest()
     xhr.open('post', "http://localhost:6060/searchName")
@@ -26,14 +44,75 @@ window.addEventListener('load', function () {
     xhr.onload = function () {
       var result = JSON.parse(this.responseText)
       if (result.code === 0) {
-        cityType.innerHTML = result.data
+        cityType.innerHTML = result.data.id
+        titleCity.innerHTML = result.data.id
+        ename.innerHTML = result.data.eId
+        topheadpic.style.backgroundImage = result.data.src
       } else {
         console.log(result.msg)
       }
     }
   }
 
-  var goBack = document.querySelector('.goBack')
+  // 用于获取当地热门的数据
+  function ajaxLocalHot(e) {
+    var xhr = new XMLHttpRequest()
+    xhr.open('post', "http://localhost:6060/detialLocalHot")
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xhr.send(`address=${id[0]}`)
+    xhr.onload = function () {
+      var result = JSON.parse(this.responseText)
+      if (result.code === 0) {
+        var type = result.data.yachen
+        // 设置滑动图的内容
+        setData(e, type)
+      } else {
+        console.log(result.msg)
+      }
+    }
+  }
+
+  function setData(e, data) {
+    Array.from(tabBar.children).forEach(item => {
+      item.classList.remove('active-tab_list')
+    });
+    e.target.classList.add('active-tab_list')
+    for (let i = 0; i < aHref.length; i++) {
+      var img = aHref[i].children[0]
+      if (e.target.innerHTML == '酒店') {
+        img.src = data.hotelImgsSrc[i].src
+      } else if (e.target.innerHTML == '景点') {
+        img.src = data.AttractionsImgsSrc[i].src
+      } else if (e.target.innerHTML == '美食') {
+        img.src = data.foodImgsSrc[i].src
+      } else if (e.target.innerHTML == '购物') {
+        img.src = data.shopImgsSrc[i].src
+      }
+    }
+    for (let i = 0; i < titleText.length; i++) {
+      if (e.target.innerHTML == '酒店') {
+        titleText[i].innerHTML = data.hotelImgsSrc[i].text
+      } else if (e.target.innerHTML == '景点') {
+        titleText[i].innerHTML = data.AttractionsImgsSrc[i].text
+      } else if (e.target.innerHTML == '美食') {
+        titleText[i].innerHTML = data.foodImgsSrc[i].text
+      } else if (e.target.innerHTML == '购物') {
+        titleText[i].innerHTML = data.shopImgsSrc[i].text
+      }
+    }
+    for (let i = 0; i < sectext.length; i++) {
+      if (e.target.innerHTML == '酒店') {
+        sectext[i].innerHTML = data.hotelImgsSrc[i].score
+      } else if (e.target.innerHTML == '景点') {
+        sectext[i].innerHTML = data.AttractionsImgsSrc[i].score
+      } else if (e.target.innerHTML == '美食') {
+        sectext[i].innerHTML = data.foodImgsSrc[i].score
+      } else if (e.target.innerHTML == '购物') {
+        sectext[i].innerHTML = data.shopImgsSrc[i].score
+      }
+    }
+  }
+
   goBack.addEventListener('click', function () {
     location.href = '../html/search.html'
   })
@@ -95,5 +174,46 @@ window.addEventListener('load', function () {
       var right = -(centerX / 7)
       sliderbar.style.transform = "translateX(" + right + 'px)'
     }
+  })
+
+  // 为animate图片实现滑动效果
+  var midX = 0
+  var startX = 0
+  var moveX = 0
+  var maxRx = 360
+  var maxLx = -(aItems.offsetWidth - animate.offsetWidth + maxRx - 20)
+  var lBounce = 0
+  var rBounce = -(aItems.offsetWidth - animate.offsetWidth)
+  aItems.addEventListener('touchstart', function (e) {
+    startX = e.targetTouches[0].pageX
+  })
+  aItems.addEventListener('touchmove', function (e) {
+    moveX = e.targetTouches[0].pageX - startX
+    var lastMoveX = moveX + midX
+    if (lastMoveX > maxRx) {
+      lastMoveX = maxRx
+    } else if (lastMoveX < maxLx) {
+      lastMoveX = maxLx
+    }
+    this.style.transform = "translateX(" + lastMoveX + "px)"
+  })
+  aItems.addEventListener('touchend', function (e) {
+    var endX = e.changedTouches[0].pageX - startX
+    midX = endX + midX
+    if (midX > lBounce) {
+      midX = lBounce
+      this.style.transition = "all 0.3"
+      this.style.transform = "translateX(" + midX + 'px)'
+    } else if (midX < rBounce) {
+      midX = rBounce
+      this.style.transition = "all 0.3"
+      this.style.transform = "translateX(" + midX + 'px)'
+    }
+  })
+
+  // 为景点、酒店等四个热门选项绑定点击事件
+  tabBar.addEventListener('click', function (e) {
+    // 发送ajax请求数据
+    ajaxLocalHot(e)
   })
 })

@@ -10,22 +10,25 @@
 </head>
 
 <body>
-  <header class="search-header">
+  <div class="search-header">
     <div class="topheadpic">
       <form action="javaScript:;" method="post" class="search-form">
         <span class="goBack iconfont">&#xe744;</span>
         <div class="city">
           <span class="city-type">亚琛</span>
         </div>
-        <span class="search-icon iconfont">&#xe6c7;</span>
-        <input type="text" class="search-msg" placeholder="目的地/酒店/景点/餐馆...">
-        <span class="clear iconfont">&#xe675;</span>
+        <div class="inp-wrapper">
+          <div type="text" class="search-msg">
+            <span class="search-icon iconfont">&#xe6c7;</span>
+            <span class="search-text">目的地/酒店/景点/餐馆/游记等</span>
+          </div>
+        </div>
         <button class="submitData iconfont">&#xe608;</button>
       </form>
       <div class="imgbox"></div>
       <div class="content">
         <h2 class="title">
-          亚琛
+          <span class="title-city">亚琛</span>
           <span class="ename">Aachen</span>
         </h2>
         <div class="itext">
@@ -82,7 +85,100 @@
         </div>
       </div>
     </div>
-  </header>
+    <div class="local-hot">
+      <h1 class="hot-title">当地热门</h1>
+      <div class="hot-tab">
+        <ul class="tab-bar">
+          <li class="tab_list active-tab_list">景点</li>
+          <li class="tab_list">酒店</li>
+          <li class="tab_list">美食</li>
+          <li class="tab_list">购物</li>
+        </ul>
+      </div>
+      <div class="animate">
+        <ul class="a-items">
+          <li class="a-list">
+            <a href="#" class="a-href">
+              <img src="../images/animate1.jpg" alt="">
+              <div class="img-title">
+                <div class="title-text">
+                  亚琛市政厅
+                </div>
+                <div class="sectext">4.1分</div>
+              </div>
+            </a>
+          </li>
+          <li class="a-list">
+            <a href="#" class="a-href">
+              <img src="../images/animate2.jpg" alt="">
+              <div class="img-title">
+                <div class="title-text">
+                  亚琛大教堂
+                </div>
+                <div class="sectext">4.4分</div>
+              </div>
+            </a>
+          </li>
+          <li class="a-list">
+            <a href="#" class="a-href">
+              <img src="../images/animate3.jpg" alt="">
+              <div class="img-title">
+                <div class="title-text">
+                  艾费尔国家公园
+                </div>
+                <div class="sectext">4.5分</div>
+              </div>
+            </a>
+          </li>
+          <li class="a-list">
+            <a href="#" class="a-href">
+              <img src="../images/animate4.jpg" alt="">
+              <div class="img-title">
+                <div class="title-text">
+                  蒙绍
+                </div>
+                <div class="sectext">4.3分</div>
+              </div>
+            </a>
+          </li>
+          <li class="a-list">
+            <a href="#" class="a-href">
+              <img src="../images/animate5.jpg" alt="">
+              <div class="img-title">
+                <div class="title-text">
+                  木偶喷泉
+                </div>
+                <div class="sectext">3.8分</div>
+              </div>
+            </a>
+          </li>
+          <li class="last-list">
+            <div class="more-view">
+              <span class="iconfont mone-list">&#xe681;</span>
+              <p>查看更过</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="place-center">
+      <h2 class="certer-title">
+        亚琛旅游问答
+      </h2>
+      <dl class="messages">
+        <dt class="questions">去白浪滩的路修好了吗</dt>
+        <dd class="answers">从防城去白浪滩的路在修，非常难走。听说11月会有国际马拉松赛，到时道路可以全部修好。欢迎点一下绿色的“采纳为最佳答案”，谢了</dd>
+      </dl>
+      <dl class="messages">
+        <dt class="questions">想问下，防城港白浪滩上可以自助烧烤吗？</dt>
+        <dd class="answers">有烧烤摊，也有提供自助烧烤的摊点，但是没有那种全开放全自由烧烤的地点，要接受景区的管理，保洁卫生。
+          欢迎点一下绿色的“采纳为最佳答案”，谢了</dd>
+      </dl>
+      <a title="亚琛旅游问答" href="#" class="moreQA">
+        查看亚琛旅游问答
+      </a>
+    </div>
+  </div>
 
 </body>
 

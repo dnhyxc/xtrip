@@ -1,0 +1,112 @@
+{
+  "yachen": {
+    "AttractionsImgsSrc": [
+      {
+        "src": "../images/animate1.jpg",
+        "text": "亚琛市政厅",
+        "score": "4.1分"
+      },
+      {
+        "src": "../images/animate2.jpg",
+        "text": "亚琛大教堂",
+        "score": "4.4分"
+      },
+      {
+        "src": "../images/animate3.jpg",
+        "text": "艾费尔国家公园",
+        "score": "4.5分"
+      },
+      {
+        "src": "../images/animate4.jpg",
+        "text": "蒙绍",
+        "score": "4.3分"
+      },
+      {
+        "src": "../images/animate5.jpg",
+        "text": "木偶喷",
+        "score": "3.8分"
+      }
+    ],
+    "hotelImgsSrc": [
+      {
+        "src": "../images/hotel1.jpg",
+        "text": "布施豪森特级酒店(Hotel Buschhausen)",
+        "score": "3.5分"
+      },
+      {
+        "src": "../images/hotel2.jpg",
+        "text": "亚琛中央火车站宜必思酒店(Ibis Aachen Hauptbahnhof)",
+        "score": "4分"
+      },
+      {
+        "src": "../images/hotel3.jpg",
+        "text": "亚琛中央火车站酒店(a&o Aachen Hauptbahnhof)",
+        "score": "3.9分"
+      },
+      {
+        "src": "../images/hotel4.jpg",
+        "text": "美居亚琛多姆酒店(Mercure Hotel Aachen am Dom)",
+        "score": "4.1分"
+      },
+      {
+        "src": "../images/hotel5.jpg",
+        "text": "亚琛马尔斯宜尔特奥宜必思酒店(Ibis Aachen Marschiertor - Aix-la-Chapelle)",
+        "score": "4分"
+      }
+    ],
+    "foodImgsSrc": [
+      {
+        "src": "../images/food1.jpg",
+        "text": "Starbucks",
+        "score": "暂无评分"
+      },
+      {
+        "src": "../images/food-2.jpg",
+        "text": "Ghorban Delikatessen Manufaktur",
+        "score": "暂无评分"
+      },
+      {
+        "src": "../images/food-3.jpg",
+        "text": "Estor Restaurant",
+        "score": "暂无评分"
+      },
+      {
+        "src": "../images/food-4.jpg",
+        "text": "Pizzaria Spagetteria Atzori",
+        "score": "暂无评分"
+      },
+      {
+        "src": "../images/food5.jpg",
+        "text": "Pausenbro",
+        "score": "暂无评分"
+      }
+    ],
+    "shopImgsSrc": [
+      {
+        "src": "../images/shop1.jpg",
+        "text": "GALERIA Kaufhof（亚琛店）",
+        "score": "暂无评分"
+      },
+      {
+        "src": "../images/shop2.jpg",
+        "text": "道格拉斯（亚琛店）",
+        "score": "4分"
+      },
+      {
+        "src": "../images/shop3.jpg",
+        "text": "美体小铺（亚琛店）",
+        "score": "暂无评分"
+      },
+      {
+        "src": "../images/shop4.jpg",
+        "text": "Telekom Shop",
+        "score": "暂无评分"
+      },
+      {
+        "src": "../images/shop5.jpg",
+        "text": "Vodafone Shop",
+        "score": "暂无评分"
+      }
+    ]
+  }
+}

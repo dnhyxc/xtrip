@@ -40,6 +40,11 @@ window.addEventListener('load', function () {
     p.innerHTML = item
     li.appendChild(p)
     li.appendChild(span)
+    li.addEventListener('click',function(e){
+      var data = e.target.innerHTML
+      ajax(data)
+      window.location.href = "../html/details.html?id=" + encodeURI(encodeURI(data))
+    })
     var limsg = li.children[0].innerHTML
     // 声明一个用于保存已经添加过的历史记录
     var msgs = []
@@ -181,16 +186,18 @@ window.addEventListener('load', function () {
 
         // 获取搜索内容不存在的情况，页面的提示内容
         var failItems = document.querySelector('.fail-items')
-        var child = failItems.children
-        for (let i = 0; i < child.length; i++) {
-          child[i].onclick = function () {
-            var hotList = child[i].children[1].innerHTML
-            if (data.indexOf(hotList) == -1) {
-              data.push(hotList)
+        if (failItems) {
+          var child = failItems.children
+          for (let i = 0; i < child.length; i++) {
+            child[i].onclick = function () {
+              var hotList = child[i].children[1].innerHTML
+              if (data.indexOf(hotList) == -1) {
+                data.push(hotList)
+              }
+              localStorage.setItem('data', data)
+              ajax(hotList)
+              window.location.href = "../html/details.html?id=" + encodeURI(encodeURI(hotList))
             }
-            localStorage.setItem('data', data)
-            ajax(hotList)
-            window.location.href = "../html/details.html?id=" + encodeURI(encodeURI(hotList))
           }
         }
       }

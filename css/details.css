@@ -8,21 +8,10 @@ body {
   box-sizing: border-box;
   background-color: #fafafc;
   width: 100%;
-  max-height: 832px;
+  height: 760px;
   max-width: 540px;
   min-width: 375.2px;
   margin: 0 auto;
-}
-
-/* 解决滑动抖动问题 */
-body {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  overflow: hidden;
 }
 
 ul {
@@ -124,19 +113,40 @@ a {
   z-index: 11;
 }
 
+.inp-wrapper {
+  position: relative;
+  width: calc(100%-94px);
+  background-color: #ccc;
+}
+
 .search-form .search-msg {
+  float: right;
   position: relative;
   box-sizing: border-box;
-  width: 100%;
-  padding: 0 0 0 62px;
+  width: 80%;
   height: 33px;
   margin-top: 5px;
-  margin-left: 2px;
   outline: none;
   border: 1px solid #FFF;
-  border-radius: 3px;
+  border-radius: 0 3px 3px 0;
   font-size: 14px;
-  text-indent: 2em;
+  text-indent: 1em;
+  text-align: left;
+  color: #a3a8ab;
+  line-height: 30px;
+  background-color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-form .search-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  z-index: 99;
+  color: #a3a8ab;
+  font-size: 14px;
 }
 
 .city {
@@ -144,8 +154,7 @@ a {
   position: absolute;
   left: 47px;
   top: 5px;
-  padding-left: 10px;
-  /* width: 62px; */
+  padding: 0 10px;
   height: 33px;
   border: #fff;
   z-index: 222;
@@ -153,50 +162,35 @@ a {
   line-height: 33px;
   text-align: left;
   font-size: 15px;
+  background-color: #fff;
 }
 
 .city::after {
   content: '';
+  height: 33px;
   position: absolute;
-  left: 62px;
+  right: 0px;
   top: 5px;
   display: inline-block;
   width: 1.6px;
   height: 22px;
+  line-height: 33px;
   background-color: #d8d8d8;
+}
+
+.city-type {
+  display: inline-block;
+  /* width: 100%; */
 }
 
 .city-type::after {
   content: '';
-  position: absolute;
-  top: 15px;
-  left: 45px;
+  display: inline-block;
+  margin-left: 5px;
+  line-height: 16px;
   border: 4px solid #868686;
   border-top-width: 5px;
   border-color: #868686 transparent transparent transparent;
-}
-
-.search-form .search-icon {
-  position: absolute;
-  top: 13px;
-  left: 115px;
-  width: 18px;
-  height: 18px;
-  z-index: 99;
-  color: #868686;
-  font-size: 14px;
-}
-
-.search-form .clear {
-  position: absolute;
-  right: 48px;
-  top: 6px;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  line-height: 30px;
-  color: #868686;
-  font-size: 18px;
 }
 
 .topheadpic {
@@ -285,7 +279,8 @@ a {
 .container {
   box-sizing: border-box;
   width: 100%;
-  height: 100px;
+  height: 120px;
+  overflow: hidden;
 }
 
 .c-icon {
@@ -318,9 +313,8 @@ a {
 .bar {
   width: 100%;
   height: 5px;
-  padding-bottom: 12px;
-  border-bottom: 8px solid #f0f3f6;
-
+  padding-bottom: 10px;
+  border-bottom: 8px solid #eaedf0;
 }
 
 .bar .progressbar {
@@ -337,4 +331,257 @@ a {
   height: 5.5px;
   background-color: #0196ff;
   border-radius: 3px;
+}
+
+.local-hot {
+  margin-top: 5px;
+  width: 100%;
+  height: 235px;
+}
+
+.hot-title {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: 400;
+  font-size: 17px;
+  color: #222;
+}
+
+.hot-tab {
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%;
+  padding: 0 16px 12px;
+  padding-left: 16px;
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-bar .tab_list {
+  flex: 1;
+  text-align: center;
+  height: 29px;
+  line-height: 29px;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.tab-bar .tab_list:nth-child(4) {
+  margin-right: 0;
+}
+
+.tab-bar .active-tab_list {
+  background-color: #4CB7F9;
+  color: #fff;
+}
+
+.animate {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 130px;
+  padding: 0 0 0 16px;
+  overflow: hidden;
+}
+
+.a-items {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 50px;
+  height: 100%;
+  width: 592px;
+}
+
+.a-list {
+  flex: 1;
+  height: 100%;
+}
+
+.last-list {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 20px;
+  padding: 6px 0 0 18px;
+}
+
+.more-view {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+  height: 85px;
+  line-height: 18px;
+  color: #666;
+  float: left;
+  padding: 8px 0 0 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.mone-list {
+  position: absolute;
+  right: 18px;
+  top: 35px;
+  color: #666;
+}
+
+.a-list a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-right: 6px;
+  text-align: left;
+}
+
+.a-list a img {
+  width: 110px;
+  height: 85px;
+}
+
+.img-title {
+  height: 42px
+}
+
+.title-text {
+  width: 110px;
+  height: 18px;
+  font-family: 'PingFangSC-Medium';
+  line-height: 18px;
+  padding: 5px 0 2px;
+  font-size: 14px;
+  text-align: left;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sectext {
+  color: #0099f7;
+  font-size: 12px;
+  text-align: left;
+  line-height: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.local-hot {
+  overflow: auto;
+}
+
+.place-center {
+  width: 100%;
+  border-top: 8px solid #eaedf0;
+}
+
+.certer-title {
+  height: 50px;
+  line-height: 50px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #222;
+  text-align: center;
+}
+
+.messages {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 16px 12px;
+  font-size: 15px;
+  color: #333;
+}
+
+.questions {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.questions::before {
+  content: 'Q';
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  background-color: #ccc;
+  font-size: 10px;
+  text-align: center;
+  line-height: 16px;
+  margin-right: 5px;
+  background-color: #4cb7f9;
+  color: #fff;
+}
+
+.answers {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 22px;
+  line-height: 22px;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.answers::before {
+  content: 'A';
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  background-color: #ccc;
+  font-size: 10px;
+  text-align: center;
+  line-height: 16px;
+  margin-right: 5px;
+  background-color: #aaacb2;
+  color: #fff;
+}
+
+.moreQA {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 55px;
+  text-align: center;
+  font-size: 15px;
+  color: #0099f7;
+  text-align: center;
+  line-height: 47px;
+  padding: 0 16px;
+  border-bottom: 8px solid #eaedf0;
+}
+
+.moreQA::before{
+  content: '';
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid #ececec;
+  padding: 0 16px;
 }
