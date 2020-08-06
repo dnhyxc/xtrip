@@ -154,12 +154,43 @@ li {
 }
 
 .sort-items li a {
+  position: relative;
   box-sizing: border-box;
   display: block;
   width: 100%;
   font: normal 16px/1.5 Arial, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
   text-decoration: none;
   color: #000;
+}
+
+.sort-items li .sort-items-icon {
+  position: absolute;
+  top: 11px;
+  left: 12px;
+  width: 20px;
+  height: 20px;
+  background-color: aqua;
+  background: url('../images/select.png') no-repeat;
+  background-size: 20px auto;
+}
+
+.sort-items li .iconList-1 {
+  background-position: 0 -75px;
+}
+.sort-items li .iconList-2 {
+  background-position: 0 -50px;
+}
+.sort-items li .iconList-3 {
+  background-position: 0 -125px;
+}
+.sort-items li .iconList-4 {
+  background-position: 0 -174px;
+}
+.sort-items li .iconList-5 {
+  background-position: 0 -100px;
+}
+.sort-items li .iconList-6 {
+  background-position: 0 -275px;
 }
 
 .sort-items li .font {
@@ -217,7 +248,7 @@ li {
   left: 8px;
   width: 20px;
   height: 20px;
-  background: url(../images/select.png) no-repeat;
+  background: url(../images/select.png) no-repeat 0 0;
   background-size: 20px auto;
 }
 
